@@ -1,13 +1,13 @@
 import React from 'react';
 import "./singlearticlereader.css";
 
-const SingleArticleReader = (props) =>{
+const SingleArticleReader = ({title, img, text}) =>{
     
     return (
         <div className="SingleArticleReader-Body">
-            <h2>reader</h2>
-            <img src="" alt=""/>
-            <section>Text</section>
+            <h2>{title}</h2>
+            <img src={img} alt={title} className="SingleArticleReader-Image"/>
+            <section>{text}</section>
         </div>
     )
 };
@@ -15,3 +15,5 @@ const SingleArticleReader = (props) =>{
 export default SingleArticleReader;
 
 // react.raph@laposte.net
+// Raph
+// react-raph
