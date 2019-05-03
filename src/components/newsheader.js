@@ -2,6 +2,7 @@ import React from 'react';
 import NewsSelector from './newsselector'
 import logo from '../logo.svg';
 import "./newsheader.css";
+import {Link} from "react-router-dom";
 
 
 const NewsHeader = () => {
@@ -19,7 +20,7 @@ const NewsHeader = () => {
                         <NewsSelector />
                     </td>
                     <td>
-                        
+                        <Link to="/settings">Settings</Link>
                     </td>
                 </tr>
             </table>
