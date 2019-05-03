@@ -13,8 +13,8 @@ function App() {
           <Route exact path="/" render={
             () => (
               <div>
-                <NewsHeader/>
-                <ArticleDisplayer/>
+                <NewsHeader fireSelectChg={(fireSelectChg)=>fireSelectionChange(fireSelectChg)}/>
+                <ArticleDisplayer register={(observer) => registerSelectionObserver(observer)}/>
               </div>
             )
           }>
@@ -32,6 +32,18 @@ function App() {
       </Router>
     </div>
   );
+}
+
+const selectionObserver = [];
+
+function fireSelectionChange(newValue) {
+  selectionObserver.map((observer) => {
+    observer(newValue)
+  })
+}
+
+function registerSelectionObserver(observer) {
+  selectionObserver.push(observer);
 }
 
 export default App;

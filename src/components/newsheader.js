@@ -5,7 +5,7 @@ import "./newsheader.css";
 import {Link} from "react-router-dom";
 
 
-const NewsHeader = () => {
+const NewsHeader = (props) => {
     const imgSize = "200 em";
 
     return (
@@ -17,7 +17,7 @@ const NewsHeader = () => {
                     </td>
                     <td>
                         <h1 className="NewsHeader-Title">Beta News</h1>
-                        <NewsSelector />
+                        <NewsSelector fire={(newValue)=>props.fire(newValue)}/>
                     </td>
                     <td>
                         <Link to="/settings">Settings</Link>

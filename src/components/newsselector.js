@@ -24,8 +24,25 @@ export default class NewsSelector extends React.Component{
         return dummyNewsSources;
     }
 
+    handleChanges = (ev) => {
+        ev.preventDefault();
+        let newValue = ev.target.newValue;
+        console.log(this.props);
+        this.setState({
+            selectedNewsSource: newValue
+        },
+            this.props.fire(newValue)
+        );
+    }
+
+    static getDerivedStateFromProps = (props) =>{
+        console.log(props);
+
+        return null;
+    }
+
     render = () => (
-        <select value={this.state.selectedNewsSource}>
+        <select value={this.state.selectedNewsSource} onChange={(ev) => {this.handleChanges(ev)}} >
             <option value="" ></option>
             {this.state.sources.map((source) =>(
                 <option key={uid(source)} value={source}>{source}</option>

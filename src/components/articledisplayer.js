@@ -1,6 +1,7 @@
 import React from 'react';
 import SingleArticleReader from "./singlearticlereader";
 import {uid} from "react-uid";
+import "./articledisplayer.css";
 import empireImg from '../img/empire.svg';
 import rebelImg from '../img/rebel.svg';
 //import scumImg from '../img/scum.svg';
@@ -11,8 +12,18 @@ export default class ArticleDisplayer extends React.Component{
         super();
 
         this.state = {
-            news: this.getNews()
-        }
+            news: this.getNews(this.props) ,
+            selected: ""
+        };
+        //console.log(this.props);
+        //this.props.register(this.handleSelectionChange);
+    }
+
+    static getDerivedStateFromProps = (props) =>{
+        console.log(props);
+        //this.props.register(this.handleSelectionChange);
+
+        return null;
     }
 
     getNews = (props) => {
@@ -34,9 +45,15 @@ export default class ArticleDisplayer extends React.Component{
         return data;
     }
 
+    handleSelectionChange = (newValue) => {
+        this.setState({
+            selected: newValue
+        })
+    }
+
     render = () => (
-        <div>
-            <h2>News</h2>
+        <div className="ArticleDisplayer-Body">
+            <h2 className="ArticleDisplayer-Title">News</h2>
             {this.state.news.map((news) => (
                 <SingleArticleReader key={uid(news)} title={news.name} img={news.image} text={news.description}/>
             ))}
